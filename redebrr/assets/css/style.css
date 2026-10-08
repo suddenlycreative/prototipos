@@ -280,7 +280,7 @@ h2,h3,p{overflow-wrap:break-word}
 .history__image-tag{position:absolute;bottom:26px;left:clamp(20px,4vw,64px);z-index:1;padding:11px 16px;border-radius:var(--raio-pilula);color:var(--cor-branco);font-size:10px;font-weight:800;letter-spacing:.17em}
 .history__content{max-width:735px;align-self:center;padding:80px clamp(40px,7vw,120px) 90px clamp(45px,6vw,100px)}
 .history__year{font-size:clamp(5rem,11vw,9.75rem);font-weight:740;letter-spacing:-.11em;line-height:1;margin:34px 0 19px;white-space:nowrap;color:var(--cor-invertido-texto);-webkit-mask-image:linear-gradient(180deg,currentColor 40%,color-mix(in srgb,currentColor 30%,transparent));mask-image:linear-gradient(180deg,currentColor 40%,color-mix(in srgb,currentColor 30%,transparent))}
-.history__desde{display:inline-block;margin:.95em .35em 0 0;vertical-align:top;font-size:clamp(12px,1.05vw,15px);font-weight:350;letter-spacing:.32em;line-height:1;text-transform:uppercase;color:var(--cor-primaria-clara)}
+.history__desde{display:inline-block;margin:.9em .55em 0 0;vertical-align:top;font-size:clamp(13px,1.15vw,16px);font-weight:500;letter-spacing:.22em;line-height:1;text-transform:uppercase;color:var(--cor-primaria-clara)}
 .history h2{max-width:590px;font-size:clamp(2rem,3vw,3.15rem);font-weight:690;line-height:1.2;letter-spacing:-.06em;margin:0 0 24px}
 .history p{font-size:14px;line-height:1.9;color:var(--cor-invertido-texto-secundario);margin:0 0 17px;max-width:520px}
 .history__timeline{list-style:none;margin:30px 0 8px;padding:0;display:grid;grid-template-columns:1fr 1fr;max-width:520px;position:relative}
