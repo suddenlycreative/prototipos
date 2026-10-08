@@ -1,0 +1,42 @@
+name: Pages
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publica:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tira do ar o que expirou
+        id: expira
+        run: python3 .github/expira.py
+      - name: Registra a remocao
+        if: steps.expira.outputs.removidos != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Vitrine: prazo vencido - ${{ steps.expira.outputs.removidos }}"
+          git push
+      - if: github.event_name != 'schedule' || steps.expira.outputs.removidos != ''
+        uses: actions/configure-pages@v5
+      - if: github.event_name != 'schedule' || steps.expira.outputs.removidos != ''
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - if: github.event_name != 'schedule' || steps.expira.outputs.removidos != ''
+        id: deploy
+        uses: actions/deploy-pages@v4
