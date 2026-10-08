@@ -59,6 +59,17 @@
   }, { passive: true });
   aoRolar();
 
+  /* Voltar ao topo: rola até o 0 exato. O alvo #topo era o header, que é
+     sticky e está sempre "à vista": o navegador não rolava nada. O id agora
+     fica no hero, e sem JS o link ainda leva ao começo da página. */
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href="#topo"]');
+    if (!link) return;
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduz ? 'auto' : 'smooth' });
+    if (window.location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
+  });
+
   /* Seção visível acende o item do menu. */
   const links = nav ? [...nav.querySelectorAll('a[href^="#"]')] : [];
   if (links.length && 'IntersectionObserver' in window) {
